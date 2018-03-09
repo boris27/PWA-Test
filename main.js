@@ -37,9 +37,13 @@ let options = {
     shippingType: 'shipping'
 };
 let pr = new PaymentRequest(paymentMethods, txInfo, options);
-console.log(pr);
-pr.addEventListener('shippingaddresschange', (e)=>e.updateWith());
-pr.addEventListener('shippingoptionchange', (e)=>console.log('option change', e));
+
 pr.show()
-    .then( (res)=> res.complete('success') )
+    .then( (res)=> console.log(res, res.complete('success')) )
     .catch( (err)=> console.log(err) );
+pr.addEventListener('shippingaddresschange', (e)=> {
+    e.updateWith(new Promise((ev)=> ev(txInfo)))
+});
+pr.addEventListener('shippingoptionchange', (e)=> {
+    e.updateWith(new Promise((ev)=> ev(txInfo)))
+});
