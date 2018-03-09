@@ -1,14 +1,12 @@
-function a( domElem ) {
-    let ul = 'ul';
-    let ol = 'ol';
-   console.dir(domElem.querySelectorAll('ul'));
-
-
-}
-function isContainsChildren(elem) {
-
-    return (elem.getElementsByTagName('ul').length || elem.getElementsByTagName('ol').length)
-
-}
-
-a(document.getElementsByTagName('body')[0]);
+let paymentMethods = [{
+    supportedMethods: ['basic-card'],
+    data: {
+        supportedNetworks: ['visa', 'mastercard']
+    }
+}, {
+    supportedMethods: ['https://android.pay/pay'],
+    data: {
+        merchantID: '12345'
+    }
+}];
+let pr = new PaymentRequest(paymentMethods, txInfo, options);
