@@ -50,7 +50,7 @@ pr.addEventListener('shippingoptionchange', (e)=> {
 });*/
 
 if ('serviceworker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
+    navigator.serviceWorker.register('/sw.js')
         .then( (reg)=> console.log(reg) )
         .catch( (err)=> console.log(err) )
 }
