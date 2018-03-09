@@ -5,12 +5,22 @@ self.addEventListener('install', (e)=> {
   e.waitUntil(
       caches.open(cacheName)
           .then( (cache)=> {
-              console.log(cache);
               cache.addAll(filesToCache)
           })
-          .then( (e)=> {
-              console.log(e);
+          .then( ()=> {
               self.skipWaiting();
           })
   );
+});
+
+self.addEventListener('activate', (e)=> {
+    e.waitUntil(
+      caches.keys().then( (keyList)=> Promise.all(keyList.map( (key)=> {
+          if (key !== cacheName) {
+              return caches.delete(key);
+          }
+      } )))
+    );
+    console.log(self);
+    return self.clients.claim();
 });
