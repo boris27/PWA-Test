@@ -49,8 +49,8 @@ pr.addEventListener('shippingoptionchange', (e)=> {
     e.updateWith(new Promise((ev)=> ev(txInfo)))
 });*/
 
-if ('serviceworker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
         .then( (reg)=> console.log(reg) )
         .catch( (err)=> console.log(err) )
 }
