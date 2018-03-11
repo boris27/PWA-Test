@@ -24,10 +24,11 @@ self.addEventListener('activate', (e)=> {
     return self.clients.claim();
 });
 
+/*
 self.addEventListener('fetch', (e)=> {
     console.log(e);
    e.respondWith(
        caches.match(e.request)
            .then( (response)=> response || fetch(e.request).catch((err)=> console.log(err)) )
    )
-});
+});*/
