@@ -38,7 +38,6 @@ let options = {
 };
 let pr = new PaymentRequest(paymentMethods, txInfo, options);
 
-/*
 pr.show()
     .then( (res)=> console.log(res, res.complete('success')) )
     .catch( (err)=> console.log(err) );
@@ -47,7 +46,7 @@ pr.addEventListener('shippingaddresschange', (e)=> {
 });
 pr.addEventListener('shippingoptionchange', (e)=> {
     e.updateWith(new Promise((ev)=> ev(txInfo)))
-});*/
+});
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
