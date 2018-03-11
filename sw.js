@@ -32,5 +32,15 @@ self.addEventListener('fetch', (e)=> {
 });
 
 self.addEventListener('push', (e)=> {
-   console.log(e.data.json());
+   const title = 'PWA Test push message';
+   const options = {
+       body : e.data.json(),
+       icon: 'img/icon.png',
+       tag: 'first-msg',
+       renotify: true,
+       silent: false,
+       data: 'my-data'
+   };
+
+   self.registration.showNotification(title, options);
 });
