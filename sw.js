@@ -1,4 +1,4 @@
-var cacheName = 'app-cache-shell-v2';
+var cacheName = 'app-cache-shell-v1';
 var filesToCache = [ 'index.html' , 'main.js', 'manifest.json'];
 
 self.addEventListener('install', (e)=> {
@@ -26,11 +26,10 @@ self.addEventListener('activate', (e)=> {
     return self.clients.claim();
 });
 
-/*
 self.addEventListener('fetch', (e)=> {
     console.log(e);
    e.respondWith(
        caches.match(e.request)
-           .then( (response)=> response || fetch(e.request).catch((err)=> console.log(err)) )
+           .then( (response)=> response || fetch(e.request) )
    )
-});*/
+});
