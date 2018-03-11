@@ -32,5 +32,5 @@ self.addEventListener('fetch', (e)=> {
 });
 
 self.addEventListener('push', (e)=> {
-   console.log(e);
+   console.log(e.data.json());
 });
