@@ -2,6 +2,7 @@ var cacheName = 'app-cache-shell-v2';
 var filesToCache = [ 'index.html' , 'main.js', 'manifest.json'];
 
 self.addEventListener('install', (e)=> {
+    console.log('installing sw');
   e.waitUntil(
       caches.open(cacheName)
           .then( (cache)=> {
@@ -14,6 +15,7 @@ self.addEventListener('install', (e)=> {
 });
 
 self.addEventListener('activate', (e)=> {
+    console.log('activate sw');
     e.waitUntil(
       caches.keys().then( (keyList)=> Promise.all(keyList.map( (key)=> {
           if (key !== cacheName) {
