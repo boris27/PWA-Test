@@ -1,5 +1,5 @@
 var cacheName = 'app-cache-shell-v2';
-var filesToCache = ['/', '/index.html' , '/main.js', '/manifest.json'];
+var filesToCache = [ 'index.html' , 'main.js', 'manifest.json'];
 
 self.addEventListener('install', (e)=> {
   e.waitUntil(
