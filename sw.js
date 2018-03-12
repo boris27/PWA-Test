@@ -25,9 +25,22 @@ self.addEventListener('activate', (e)=> {
 });
 
 self.addEventListener('fetch', (e)=> {
+   let reqClone = e.request.clone();
    e.respondWith(
-       caches.match(e.request)
-           .then( (response)=> response || fetch(e.request) )
+       fetch(e.request).then( (res)=> {
+         let resClone = res.clone();
+         if (res.status === 200) {
+            caches.open(cacheName)
+                .then((cache)=> {
+                    if(cache.delete(e.request)) {
+                        cache.put(e.request, resClone)
+                    }
+                });
+            return res
+         } else {
+            return caches.match(reqClone).then( (res)=> res)
+         }
+       })
    )
 });
 
